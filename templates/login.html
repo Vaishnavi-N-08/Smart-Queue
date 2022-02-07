@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Login form -->
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- messages -->
+        {% if messages %}
+        {% for message in messages %}
+        <h2>{{message}}</h2>
+        {% endfor %}
+        {% endif %}
+        <input type="email" name="email" id="email">
+        <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+        <input type="submit" value="Login">
+    </form>
+    <!-- sign up page link -->
+    <a href="{% url 'signup' %}">Sign Up</a>
+    <a href="{% url 'forgot' %}">Forgot Password</a>
+</body>
+
+</html>

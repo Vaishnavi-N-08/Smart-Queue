@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <label for="address">Choose your address from the list:</label>
+      <input list="addresss" name="address" id="address" />
+      <datalist id="addresss">
+        {% for i in address_list %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+      </datalist>
+      <input type="submit" />
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+    <h2>{{message}}</h2>
+    {% endfor %}
+    {% endif %}
+
+  </body>
+</html>
